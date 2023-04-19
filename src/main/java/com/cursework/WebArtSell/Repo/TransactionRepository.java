@@ -1,7 +1,7 @@
 package com.cursework.WebArtSell.Repo;
 
-import com.cursework.WebArtSell.Models.Announcement;
+import com.cursework.WebArtSell.Models.Transaction;
 import org.springframework.data.repository.CrudRepository;
 
-public interface TransactionRepository extends CrudRepository<Announcement, Long> {
+public interface TransactionRepository extends CrudRepository<Transaction, Long> {
 }

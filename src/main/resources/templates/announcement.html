@@ -8,7 +8,6 @@
 </head>
 
 <body>
-
 <header th:insert="blocks/header :: header"></header>
 
 <div class="container mt-5">
@@ -16,14 +15,11 @@
     <div th:each="el : ${posts}" class="alert alert-info mt-2">
         <h3 th:text="${el.title}"></h3>
         <p th:text="${el.anons}"></p>
-        <a th:href="'/blog/'+${el.id}">Редактировать</a>
+        <a th:href="'/announcement/'+${el.id}" class="btn btm-warning">Редактировать</a>
     </div>
 </div>
 
-
 <footer th:insert="blocks/footer :: footer"></footer>
-
-
 </body>
 
 </html>
