@@ -1,12 +1,161 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Главная</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <title>ArtHub</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <script src="JScripts/jQueryScripts.js" type="text/javascript"></script>
 
+    <style>
+        /*заменить на /css <link href="Styles.css" rel="stylesheet" type="text/css" media="screen"/>*/
+        .iprod, body {
+            background: #fff
+        }
+
+        .ipimage > a, .ipname > a {
+            display: table-cell;
+            text-align: center
+        }
+
+        .ipimage > a, .ipname > a, .iprod {
+            text-align: center
+        }
+
+        .cenlist > div, li.catprod {
+            float: left
+        }
+
+        body {
+            font-size: 13px;
+            font-family: 'Open Sans', sans-serif;
+            color: #404040;
+            outline: 0
+        }
+
+        *, :after, :before {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0
+        }
+
+        .ipdescr {
+            display: none;
+            color: #777;
+            line-height: 19px
+        }
+
+        .ipdescr > div {
+            padding: 0 0 10px
+        }
+
+        .iprod {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            min-height: 100%;
+            transition: .15s;
+            padding: 15px
+        }
+
+        .ipimage, .ipname {
+            display: table;
+            width: 100%
+        }
+
+        .iprod .cenlist {
+            display: inline-block
+        }
+
+        .ipimage {
+            height: 288px;
+            position: relative;
+            box-shadow: 0 0 0 0 #fff, 0 0 40px rgba(0, 0, 0, .25)
+        }
+
+        .ipimage > a {
+            vertical-align: middle
+        }
+
+        .ipimage > a > img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: -4px
+        }
+
+        .ipname {
+            margin: 20px 0 0
+        }
+
+        .ipname > a {
+            vertical-align: bottom;
+            height: 45px;
+            overflow: hidden;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #222;
+            line-height: 21px
+        }
+
+        .cenlist, .max, li.catprod, li.catprod > div {
+            display: block;
+            position: relative
+        }
+
+        .cenlist > div > span > b {
+            font-weight: 400
+        }
+
+        .prc-old {
+            font-size: 12px;
+            color: #ff6969;
+            padding: 7px 0 0 13px;
+            text-decoration: line-through
+        }
+
+        .cenlist > div.prc-new > span > b {
+            font-size: 19px;
+            font-weight: 600;
+            color: #555
+        }
+
+        li.catprod {
+            width: 33.333%;
+            height: 533px;
+            border-width: 0 1px 1px 0
+        }
+
+        ul.catprods > li.catprod:nth-child(3n) {
+            border-width: 0 0 1px
+        }
+
+        li.catprod > div {
+            width: 100%;
+            min-height: 100%
+        }
+
+        .catprod.active > div {
+            box-shadow: 0 0 0 1px #fff, 0 0 75px rgba(0, 0, 0, .25)
+        }
+
+        .max {
+            max-width: 1270px;
+            padding: 0 20px;
+            margin: 0 auto
+        }
+
+        .pad-t-30 {
+            padding-top: 30px
+        }
+
+        .pad-b-50 {
+            padding-bottom: 50px
+        }
+    </style>
+</head>
 <body>
 <header th:insert="blocks/header :: header"></header>
 <div class="nav-scroller py-1 mb-2">
@@ -18,160 +167,46 @@
         <a class="p-2 link-secondary" href="#">Украшения и аксессуары</a>
         <a class="p-2 link-secondary" href="#">Каллиграфия</a>
         <a class="p-2 link-secondary" href="#">Рукописные книги</a>
-        <a class="p-2 link-secondary" href="#">Макеты зданий и сооружений</a>
     </nav>
 </div>
-<main>
-    <div class="album py-5 bg-body-tertiary">
-        <div class="container">
-
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                             xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                             preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c"></rect>
-                            <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                        </svg>
-                        <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural
-                                lead-in to
-                                additional content. This content is a little bit longer.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                </div>
-                                <small class="text-body-secondary">9 mins</small>
-                            </div>
+<div class="max pad-t-30 pad-b-50">
+    <ul>
+        <li th:each="product : ${products}" class="catprod product jsprod">
+            <div class="iprod">
+                <div class="ipimage image">
+                    <a th:href="@{/}">
+                        <img th:src="${product.imageUrl}" th:alt="${product.name}"/>
+                    </a>
+                </div>
+                <div class="ipname">
+                    <a th:href="@{/products/{id}(id=${product.id})}" th:text="${product.name}"></a>
+                </div>
+                <div>
+                    <div class="cenlist">
+                        <div class="prc-new">
+                        <span>
+                            <b th:text="${product.price}"></b> руб.
+                        </span>
                         </div>
+                        <div class="prc-old" style="display: none;"></div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                             xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                             preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c"></rect>
-                            <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                        </svg>
-                        <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural
-                                lead-in to
-                                additional content. This content is a little bit longer.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                </div>
-                                <small class="text-body-secondary">9 mins</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                             xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                             preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c"></rect>
-                            <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                        </svg>
-                        <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural
-                                lead-in to
-                                additional content. This content is a little bit longer.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                </div>
-                                <small class="text-body-secondary">9 mins</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                             xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                             preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c"></rect>
-                            <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                        </svg>
-                        <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural
-                                lead-in to
-                                additional content. This content is a little bit longer.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                </div>
-                                <small class="text-body-secondary">9 mins</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                             xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                             preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c"></rect>
-                            <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                        </svg>
-                        <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural
-                                lead-in to
-                                additional content. This content is a little bit longer.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                </div>
-                                <small class="text-body-secondary">9 mins</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                             xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                             preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c"></rect>
-                            <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                        </svg>
-                        <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural
-                                lead-in to
-                                additional content. This content is a little bit longer.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                </div>
-                                <small class="text-body-secondary">9 mins</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div th:text="${product.artist}"></div>
+                <div class="ipdescr" th:text="${product.dimensions + ', холст, масло'}"></div>
             </div>
-        </div>
-    </div>
-</main>
+        </li>
+    </ul>
 
-<footer th:insert="blocks/footer :: footer"></footer>
+</div>
+<!--<hr>-->
+
+<!--    <footer th:insert="blocks/footer :: footer"></footer>-->
+
+
+<script src="JScripts/jQuerySlickScripts.js" type="text/javascript"></script>
+<script src="JScripts/jQuarySmarty.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,800&subset=cyrillic"
+      rel="stylesheet">
 
 </body>
-
 </html>
