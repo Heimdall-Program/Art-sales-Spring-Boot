@@ -1,25 +1,24 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Список объявлений</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
-
 <body>
 <header th:insert="blocks/header :: header"></header>
-
-<div class="container mt-5">
+<main class="container mt-5">
     <h1>Список объявлений</h1>
-    <div th:each="el : ${posts}" class="alert alert-info mt-2">
-        <h3 th:text="${el.title}"></h3>
-        <p th:text="${el.anons}"></p>
-        <a th:href="'/announcement/'+${el.id}" class="btn btm-warning">Редактировать</a>
+    <div th:each="el : ${posts}" class="card mt-3">
+        <div class="card-body">
+            <h3 class="card-title" th:text="${el.title}"></h3>
+            <p class="card-text" th:text="${el.anons}"></p>
+            <a th:href="'/announcement/'+${el.id}" class="btn btn-warning">Редактировать</a>
+        </div>
     </div>
-</div>
+</main>
 
 <footer th:insert="blocks/footer :: footer"></footer>
 </body>
-
 </html>

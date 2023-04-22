@@ -1,21 +1,31 @@
 package com.cursework.WebArtSell.Models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "transaction")
 public class Transaction {
+
+    @jakarta.persistence.Id
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "buyer_id")
+    private String buyerId;
+
+    @Column(name = "purchase_date")
+    private LocalDateTime purchaseDate;
+
+    @Column(name = "seller_id")
+    private String sellerId;
+
+    @Column(name = "sum")
     private Double sum;
-    private String buyer_id;
-    private String seller_id;
-    private Timestamp purchase_date;
+
 
     public Long getId() {
         return id;
@@ -25,35 +35,35 @@ public class Transaction {
         this.id = id;
     }
 
+    public String getBuyerId() {
+        return buyerId;
+    }
+
+    public void setBuyerId(String buyerId) {
+        this.buyerId = buyerId;
+    }
+
+    public LocalDateTime getPurchaseDate() {
+        return purchaseDate;
+    }
+
+    public void setPurchaseDate(LocalDateTime purchaseDate) {
+        this.purchaseDate = purchaseDate;
+    }
+
+    public String getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(String sellerId) {
+        this.sellerId = sellerId;
+    }
+
     public Double getSum() {
         return sum;
     }
 
     public void setSum(Double sum) {
         this.sum = sum;
-    }
-
-    public String getBuyer_id() {
-        return buyer_id;
-    }
-
-    public void setBuyer_id(String buyer_id) {
-        this.buyer_id = buyer_id;
-    }
-
-    public String getSeller_id() {
-        return seller_id;
-    }
-
-    public void setSeller_id(String seller_id) {
-        this.seller_id = seller_id;
-    }
-
-    public Timestamp getPurchase_date() {
-        return purchase_date;
-    }
-
-    public void setPurchase_date(Timestamp purchase_date) {
-        this.purchase_date = purchase_date;
     }
 }

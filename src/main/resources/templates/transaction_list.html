@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="light">
+<html lang="en" data-bs-theme="light" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -60,17 +60,6 @@
             <div
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">График</h1>
-                <div class="btn-toolbar mb-2 mb-md-0">
-                    <button type="button" class="btn btn-sm btn-outline-secondary                    dropdown-toggle"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Экспорт
-                    </button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">CSV</a>
-                        <a class="dropdown-item" href="#">Excel</a>
-                        <a class="dropdown-item" href="#">PDF</a>
-                    </div>
-                </div>
             </div>
 
             <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
@@ -87,17 +76,11 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>2023-04-19</td>
-                        <td>Покупка товара</td>
-                        <td>$150</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>2023-04-18</td>
-                        <td>Продажа товара</td>
-                        <td>$200</td>
+                    <tr th:each="transaction : ${transactions}">
+                        <td th:text="${transaction.id}">1</td>
+                        <td th:text="${transaction.purchaseDate}">2023-04-19</td>
+                        <td th:text="${transaction.buyerId == null ? 'Продажа товара' : 'Покупка товара'}">Описание</td>
+                        <td th:text="${'$' + transaction.sum}">$150</td>
                     </tr>
                     </tbody>
                 </table>
