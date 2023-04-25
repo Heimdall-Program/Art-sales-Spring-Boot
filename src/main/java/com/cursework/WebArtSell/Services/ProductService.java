@@ -1,4 +1,4 @@
-package com.cursework.WebArtSell.Controllers;
+package com.cursework.WebArtSell.Services;
 
 import com.cursework.WebArtSell.Models.Product;
 import com.cursework.WebArtSell.Repo.ProductRepository;

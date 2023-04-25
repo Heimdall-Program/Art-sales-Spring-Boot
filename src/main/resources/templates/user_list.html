@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -67,26 +67,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Иван Иванов</td>
-                        <td>ivan@example.com</td>
-                        <td>01.01.2023</td>
-                        <td>Активный</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Петр Петров</td>
-                        <td>petr@example.com</td>
-                        <td>10.02.2023</td>
-                        <td>Заблокирован</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Сергей Сергеев</td>
-                        <td>sergey@example.com</td>
-                        <td>15.02.2023</td>
-                        <td>Активный</td>
+                    <tr th:each="user : ${users}">
+                        <td th:text="${userStat.count}">1</td>
+                        <td th:text="${user.login}">Иван Иванов</td>
+                        <td th:text="${user.email}">ivan@example.com</td>
+                        <td th:text="${user.creationDate}">01.01.2023</td>
+                        <td th:text="${user.status}">Активный</td>
                     </tr>
                     </tbody>
                 </table>

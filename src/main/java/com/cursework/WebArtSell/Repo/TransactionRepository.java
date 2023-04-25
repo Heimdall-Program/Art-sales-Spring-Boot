@@ -1,10 +1,15 @@
 package com.cursework.WebArtSell.Repo;
 
-
 import com.cursework.WebArtSell.Models.Transaction;
+import com.cursework.WebArtSell.Models.TransactionChartData;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Query;
 
-@Repository
+import java.util.List;
+
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
+    @Query("SELECT new com.cursework.WebArtSell.Models.TransactionChartData(FUNCTION('DATE_FORMAT', t.purchaseDate, '%Y-%m-%d'), SUM(t.sum)) " +
+            "FROM Transaction t GROUP BY FUNCTION('DATE_FORMAT', t.purchaseDate, '%Y-%m-%d') ORDER BY FUNCTION('DATE_FORMAT', t.purchaseDate, '%Y-%m-%d') ASC")
+    List<TransactionChartData> findTransactionChartData();
+
 }

@@ -1,4 +1,4 @@
-package com.cursework.WebArtSell.Controllers;
+package com.cursework.WebArtSell.Services;
 
 import com.cursework.WebArtSell.Models.Transaction;
 import com.cursework.WebArtSell.Repo.TransactionRepository;
