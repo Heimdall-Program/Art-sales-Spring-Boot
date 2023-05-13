@@ -28,47 +28,23 @@ public class AuthorisationController {
     }
 
     @PostMapping
-    public String authenticateUser(@RequestParam("email") String email, @RequestParam("password") String password, Model model, HttpSession session) {
+    public String userLogin(@RequestParam String email,
+                            @RequestParam String password,
+                            Model model,
+                            HttpServletRequest request) {
         Optional<User> optionalUser = userRepository.findByEmailAndPassword(email, password);
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
+            HttpSession session = request.getSession();
             session.setAttribute("user", user);
             if (user.getRole().equals("ADMIN")) {
-                return "redirect:/admin";
+                return "redirect:/user_list";
             } else {
-                return "redirect:/user-panel";
+                return "redirect:/main-user";
             }
         } else {
-            model.addAttribute("errorMessage", "Неверный адрес электронной почты или пароль");
+            model.addAttribute("error", "Неверный email или пароль");
             return "authorisation";
-        }
-    }
-
-
-    public boolean checkUserRole(HttpServletRequest request, String role) {
-        HttpSession session = request.getSession(false);
-        if (session == null || session.getAttribute("user") == null) {
-            return false;
-        }
-        User user = (User) session.getAttribute("user");
-        return user.getRole().equals(role);
-    }
-
-    @GetMapping("/admin")
-    public String showAdminPage(HttpServletRequest request) {
-        if (checkUserRole(request, "ADMIN")) {
-            return "user_list";
-        } else {
-            return "redirect:/authorisation";
-        }
-    }
-
-    @GetMapping("/user-panel")
-    public String showUserPanel(HttpServletRequest request) {
-        if (checkUserRole(request, "USER")) {
-            return "/main";
-        } else {
-            return "redirect:/authorisation";
         }
     }
 

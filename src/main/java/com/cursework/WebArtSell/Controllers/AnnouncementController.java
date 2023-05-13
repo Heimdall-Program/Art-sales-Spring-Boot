@@ -20,12 +20,12 @@ public class AnnouncementController {
     public String getAllAnnouncements(Model model) {
         List<Announcement> posts = (List<Announcement>) announcementRepository.findAll();
         model.addAttribute("posts", posts);
-        return "announcement";
+        return "product";
     }
 
     @GetMapping("/add")
     public String addAnnouncement() {
-        return "announcement-add";
+        return "product-add";
     }
 
     @PostMapping("/add")
@@ -39,7 +39,7 @@ public class AnnouncementController {
         Optional<Announcement> announcement = announcementRepository.findById(id);
         if (announcement.isPresent()) {
             model.addAttribute("announcement", announcement.get());
-            return "announcement-details";
+            return "product-details";
         }
         return "redirect:/announcement";
     }
@@ -49,7 +49,7 @@ public class AnnouncementController {
         Optional<Announcement> announcement = announcementRepository.findById(id);
         if (announcement.isPresent()) {
             model.addAttribute("announcement", announcement.get());
-            return "announcement-edit";
+            return "product-edit";
         }
         return "redirect:/announcement";
     }

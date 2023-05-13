@@ -19,6 +19,15 @@ public class Product {
     private BigDecimal price;
     private String artist;
     private String dimensions;
+    private String category;
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
     public Long getId() {
         return id;
