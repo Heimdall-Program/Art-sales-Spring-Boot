@@ -14,6 +14,12 @@
 
         .card {
             height: 500px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
         }
     </style>
     <script th:src="@{/js/jQuarySmarty.js}"></script>
@@ -59,8 +65,9 @@
                         </p>
                         <div class="d-flex justify-content-between align-items-end">
                             <div class="btn-group">
-                                <a th:href="@{/product/{id}(id=${product.id})}" class="btn btn-sm btn-outline-secondary">Открыть</a>
+                                <a th:href="@{/product/{id}(id=${product.id})}"
                                    class="btn btn-sm btn-outline-secondary">Открыть</a>
+                                class="btn btn-sm btn-outline-secondary">Открыть</a>
                             </div>
                             <strong><span th:text="${product.price}"></span> руб.</strong>
                         </div>
