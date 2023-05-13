@@ -10,24 +10,21 @@
 </head>
 
 <body>
-
-<div class="container">
-    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">ArtHub</a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search"
-               aria-label="Search">
-        <div class="navbar-nav">
-            <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="/authorisation">Выйти</a>
-            </div>
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">ArtHub</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search"
+           aria-label="Search">
+    <div class="navbar-nav">
+        <div class="nav-item text-nowrap">
+            <a class="nav-link px-3" href="/authorisation">Выйти</a>
         </div>
-    </header>
-</div>
+    </div>
+</header>
 
 <div class="container-fluid">
     <div class="row">
@@ -73,6 +70,7 @@
                         <th>Почта</th>
                         <th>Дата создания</th>
                         <th>Статус</th>
+                        <th>Действия</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -82,6 +80,15 @@
                         <td th:text="${user.email}">ivan@example.com</td>
                         <td th:text="${user.creationDate}">01.01.2023</td>
                         <td th:text="${user.status}">Активный</td>
+                        <td>
+                            <form th:action="@{/user_list/edit/{id}(id=${user.id})}" method="post">
+                                <button type="submit" class="btn btn-sm btn-outline-dark btn-block">Редактировать
+                                </button>
+                            </form>
+                            <form th:action="@{/user_list/delete/{id}(id=${user.id})}" method="post">
+                                <button type="submit" class="btn btn-sm btn-outline-dark btn-block">Удалить</button>
+                            </form>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
