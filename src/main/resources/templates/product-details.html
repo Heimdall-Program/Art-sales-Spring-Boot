@@ -12,18 +12,8 @@
             color: white;
         }
 
-        .btn-outline-secondary {
-            border-color: #004085;
-            color: #004085;
-        }
-
         .btn:hover {
             background-color: #002752;
-        }
-
-        .btn-outline-secondary:hover {
-            color: #002752;
-            border-color: #002752;
         }
 
         .card-img-top {
@@ -40,7 +30,7 @@
     </style>
 </head>
 <body>
-<a class="btn btn-sm btn-outline-secondary back-button" href="/main-user">Назад</a>
+<a class="btn btn-link" href="/main-user">Назад</a>
 
 <main class="container mt-5">
     <div th:each="el : ${product}" class="card mt-2">
