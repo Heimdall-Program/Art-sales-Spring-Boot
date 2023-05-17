@@ -2,14 +2,39 @@
 <html lang="ru">
 <head>
     <title>Регистрация</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/background-image.css}"/>
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+        }
+
+        .card {
+            border: 1px solid #000;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .btn-link {
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            opacity: 0.8;
+        }
+
+        .btn-link:hover {
+            color: #fff;
+            background-color: #0056b3;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
 <div class="container mt-5">
-    <div class="row justify-content-between">
-        <a href="/" class="btn btn-link">На главную</a>
-        <a href="/authorisation" class="btn btn-link">Авторизоваться</a>
-    </div>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
@@ -18,26 +43,32 @@
                     <form action="/registration" method="post">
                         <div class="form-group">
                             <label for="floatingName">Имя</label>
-                            <input type="text" class="form-control" id="floatingName" name="name" placeholder="Имя"
-                                   required>
+                            <input class="form-control" id="floatingName" name="name" placeholder="Имя" required
+                                   type="text">
                         </div>
                         <div class="form-group">
                             <label for="floatingInput">Адрес электронной почты</label>
-                            <input type="email" class="form-control" id="floatingInput" name="email"
-                                   placeholder="name@example.com" required>
+                            <input class="form-control" id="floatingInput" name="email" placeholder="name@example.com"
+                                   required type="email">
                         </div>
                         <div class="form-group">
                             <label for="floatingPassword">Пароль</label>
-                            <input type="password" class="form-control" id="floatingPassword" name="password"
-                                   placeholder="Password" required>
+                            <input class="form-control" id="floatingPassword" name="password" placeholder="Password"
+                                   required type="password">
                         </div>
                         <div class="form-group">
                             <label for="floatingConfirmPassword">Подтверждение пароля</label>
-                            <input type="password" class="form-control" id="floatingConfirmPassword"
-                                   name="confirm_password" placeholder="Password" required>
+                            <input class="form-control" id="floatingConfirmPassword" name="confirm_password"
+                                   placeholder="Password" required type="password">
                         </div>
                         <button class="btn btn-primary btn-block" type="submit">Зарегистрироваться</button>
                     </form>
+                    <div class="container mt-3">
+                        <div class="row justify-content-between">
+                            <a class="btn btn-link" href="/">На главную</a>
+                            <a class="btn btn-link" href="/authorisation">Авторизоваться</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -45,3 +76,5 @@
 </div>
 </body>
 </html>
+
+

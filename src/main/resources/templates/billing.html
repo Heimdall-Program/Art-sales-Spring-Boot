@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/styles.css}"/>
     <title>Оплата</title>
 </head>
@@ -17,43 +17,43 @@
                 <form class="needs-validation" novalidate>
                     <div class="row g-3">
                         <div class="col-sm-6">
-                            <label for="firstName" class="form-label">Имя</label>
-                            <input type="text" class="form-control" id="firstName" required>
+                            <label class="form-label" for="firstName">Имя</label>
+                            <input class="form-control" id="firstName" required type="text">
                             <div class="invalid-feedback">Требуется указать действительное имя.</div>
                         </div>
                         <div class="col-sm-6">
-                            <label for="lastName" class="form-label">Фамилия</label>
-                            <input type="text" class="form-control" id="lastName" required>
+                            <label class="form-label" for="lastName">Фамилия</label>
+                            <input class="form-control" id="lastName" required type="text">
                             <div class="invalid-feedback">Требуется указать действительную фамилию.</div>
                         </div>
                         <div class="col-12">
-                            <label for="username" class="form-label">Имя пользователя</label>
+                            <label class="form-label" for="username">Имя пользователя</label>
                             <div class="input-group has-validation">
                                 <span class="input-group-text">@</span>
-                                <input type="text" class="form-control" id="username" placeholder="Имя пользователя"
-                                       required>
+                                <input class="form-control" id="username" placeholder="Имя пользователя" required
+                                       type="text">
                                 <div class="invalid-feedback">Требуется указать имя пользователя.</div>
                             </div>
                         </div>
                         <div class="col-12">
-                            <label for="email" class="form-label">Электронная почта <span
+                            <label class="form-label" for="email">Электронная почта <span
                                     class="text-body-secondary">(Необязательно)</span></label>
-                            <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                            <input class="form-control" id="email" placeholder="you@example.com" type="email">
                             <div class="invalid-feedback">Пожалуйста, введите действительный адрес электронной почты для
                                 получения обновлений о доставке.
                             </div>
                         </div>
                         <div class="col-12">
-                            <label for="address" class="form-label">Адрес</label>
-                            <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+                            <label class="form-label" for="address">Адрес</label>
+                            <input class="form-control" id="address" placeholder="1234 Main St" required type="text">
                             <div class="invalid-feedback">Пожалуйста, введите ваш адрес доставки.</div>
                         </div>
                         <div class="col-12">
-                            <label for="address2" class="form-label">Адрес 2 <span class="text-body-secondary">(Необязательно)</span></label>
-                            <input type="text" class="form-control" id="address2" placeholder="Квартира или офис">
+                            <label class="form-label" for="address2">Адрес 2 <span class="text-body-secondary">(Необязательно)</span></label>
+                            <input class="form-control" id="address2" placeholder="Квартира или офис" type="text">
                         </div>
                         <div class="col-md-5">
-                            <label for="country" class="form-label">Страна</label>
+                            <label class="form-label" for="country">Страна</label>
                             <select class="form-select" id="country" required>
                                 <option value="">Выберите...</option>
                                 <option>Россия</option>
@@ -61,7 +61,7 @@
                             <div class="invalid-feedback">Пожалуйста, выберите действительную страну.</div>
                         </div>
                         <div class="col-md-4">
-                            <label for="state" class="form-label">Область</label>
+                            <label class="form-label" for="state">Область</label>
                             <select class="form-select" id="state" required>
                                 <option value="">Выберите...</option>
                                 <option>Московская область</option>
@@ -69,21 +69,21 @@
                             <div class="invalid-feedback">Пожалуйста, выберите действительную область.</div>
                         </div>
                         <div class="col-md-3">
-                            <label for="zip" class="form-label">Почтовый индекс</label>
-                            <input type="text" class="form-control" id="zip" placeholder="" required>
+                            <label class="form-label" for="zip">Почтовый индекс</label>
+                            <input class="form-control" id="zip" placeholder="" required type="text">
                             <div class="invalid-feedback">Требуется указать почтовый индекс.</div>
                         </div>
                     </div>
                     <hr class="my-4">
 
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="same-address">
+                        <input class="form-check-input" id="same-address" type="checkbox">
                         <label class="form-check-label" for="same-address">Адрес доставки совпадает с адресом
                             плательщика</label>
                     </div>
 
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="save-info">
+                        <input class="form-check-input" id="save-info" type="checkbox">
                         <label class="form-check-label" for="save-info">Сохранить эту информацию на следующий
                             раз</label>
                     </div>
@@ -94,42 +94,42 @@
 
                     <div class="my-3">
                         <div class="form-check">
-                            <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked
-                                   required>
+                            <input checked class="form-check-input" id="credit" name="paymentMethod" required
+                                   type="radio">
                             <label class="form-check-label" for="credit">Кредитная карта</label>
                         </div>
                         <div class="form-check">
-                            <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
+                            <input class="form-check-input" id="debit" name="paymentMethod" required type="radio">
                             <label class="form-check-label" for="debit">Дебетовая карта</label>
                         </div>
                         <div class="form-check">
-                            <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
+                            <input class="form-check-input" id="paypal" name="paymentMethod" required type="radio">
                             <label class="form-check-label" for="paypal">PayPal</label>
                         </div>
                     </div>
 
                     <div class="row gy-3">
                         <div class="col-md-6">
-                            <label for="cc-name" class="form-label">Имя на карте</label>
-                            <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                            <label class="form-label" for="cc-name">Имя на карте</label>
+                            <input class="form-control" id="cc-name" placeholder="" required type="text">
                             <small class="text-body-secondary">Полное имя, указанное на карте</small>
                             <div class="invalid-feedback">Требуется указать имя на карте</div>
                         </div>
 
                         <div class="col-md-6">
-                            <label for="cc-number" class="form-label">Номер кредитной карты</label>
-                            <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                            <label class="form-label" for="cc-number">Номер кредитной карты</label>
+                            <input class="form-control" id="cc-number" placeholder="" required type="text">
                             <div class="invalid-feedback">Требуется указать номер кредитной карты</div>
                         </div>
                         <div class="col-md-3">
-                            <label for="cc-expiration" class="form-label">Срок действия</label>
-                            <input type="text" class="form-control" id="cc-expiration" placeholder="MM/YY" required>
+                            <label class="form-label" for="cc-expiration">Срок действия</label>
+                            <input class="form-control" id="cc-expiration" placeholder="MM/YY" required type="text">
                             <div class="invalid-feedback">Требуется указать срок действия</div>
                         </div>
 
                         <div class="col-md-3">
-                            <label for="cc-cvv" class="form-label">CVV</label>
-                            <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                            <label class="form-label" for="cc-cvv">CVV</label>
+                            <input class="form-control" id="cc-cvv" placeholder="" required type="text">
                             <div class="invalid-feedback">Требуется указать CVV</div>
                         </div>
                     </div>
@@ -174,5 +174,17 @@
         </div>
     </main>
 </div>
+<footer class="bg-light text-center text-lg-start mt-5">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        <div class="container py-4">
+            <h5 class="text-uppercase">Контакты</h5>
+            <p>
+                Адрес: 12345, г. Минск, ул. Арт-Стрит, д. 1<br>
+                Телефон: +7 (123) 456-78-90<br>
+                Email: info@arthub.ru
+            </p>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

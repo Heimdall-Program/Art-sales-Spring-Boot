@@ -2,14 +2,39 @@
 <html lang="ru">
 <head>
     <title>Авторизация</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/background-image.css}"/>
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+        }
+
+        .card {
+            border: 1px solid #000;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .btn-link {
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            opacity: 0.8;
+        }
+
+        .btn-link:hover {
+            color: #fff;
+            background-color: #0056b3;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
 <div class="container mt-5">
-    <div class="row justify-content-between">
-        <a href="/" class="btn btn-link">На главную</a>
-        <a href="/registration" class="btn btn-link">Зарегистрироваться</a>
-    </div>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
@@ -18,24 +43,31 @@
                     <form action="/authorisation" method="post">
                         <div class="form-group">
                             <label for="floatingInput">Адрес электронной почты</label>
-                            <input type="email" class="form-control" id="floatingInput" name="email"
-                                   placeholder="name@example.com" required>
+                            <input class="form-control" id="floatingInput" name="email" placeholder="name@example.com"
+                                   required type="email">
                         </div>
                         <div class="form-group">
                             <label for="floatingPassword">Пароль</label>
-                            <input type="password" class="form-control" id="floatingPassword" name="password"
-                                   placeholder="Password" required>
+                            <input class="form-control" id="floatingPassword" name="password" placeholder="Password"
+                                   required type="password">
                         </div>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" value="remember-me" id="rememberMe">
+                            <input class="form-check-input" id="rememberMe" type="checkbox" value="remember-me">
                             <label class="form-check-label" for="rememberMe">Запомнить меня</label>
                         </div>
                         <button class="btn btn-primary btn-block" type="submit">Войти</button>
                     </form>
+                    <div class="container mt-3">
+                        <div class="row justify-content-between">
+                            <a class="btn btn-link" href="/">На главную</a>
+                            <a class="btn btn-link" href="/registration">Зарегистрироваться</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 </body>
 </html>
