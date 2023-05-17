@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import org.springframework.data.annotation.Id;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 public class Product {
@@ -20,6 +21,15 @@ public class Product {
     private String artist;
     private String dimensions;
     private String category;
+    private LocalDateTime creationDate;
+
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
+    }
 
     public String getCategory() {
         return category;

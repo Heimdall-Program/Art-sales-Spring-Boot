@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,9 +32,11 @@ public class ProductController {
 
     @PostMapping("/add")
     public String createProduct(@ModelAttribute Product product) {
+        product.setCreationDate(LocalDateTime.now());
         productRepository.save(product);
         return "redirect:/main-user";
     }
+
 
     @GetMapping("/{id}")
     public String getProductById(@PathVariable long id, Model model) {
