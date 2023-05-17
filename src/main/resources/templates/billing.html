@@ -5,11 +5,34 @@
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <link rel="stylesheet" th:href="@{/css/background-image.css}"/>
     <title>Оплата</title>
+    <style>
+        .container {
+            max-width: 90%;
+        }
+
+        .container.bg-light.shadow-lg.p-3.mb-5.rounded {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 
 <body class="bg-body-tertiary">
-<div class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="/main-user">ArtHub</a>
+        <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+                data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+<div class="container bg-light shadow-lg p-3 mb-5 rounded">
     <main>
         <div class="row g-5">
             <div class="col-md-7 col-lg-8">
@@ -29,7 +52,6 @@
                         <div class="col-12">
                             <label class="form-label" for="username">Имя пользователя</label>
                             <div class="input-group has-validation">
-                                <span class="input-group-text">@</span>
                                 <input class="form-control" id="username" placeholder="Имя пользователя" required
                                        type="text">
                                 <div class="invalid-feedback">Требуется указать имя пользователя.</div>
@@ -39,13 +61,15 @@
                             <label class="form-label" for="email">Электронная почта <span
                                     class="text-body-secondary">(Необязательно)</span></label>
                             <input class="form-control" id="email" placeholder="you@example.com" type="email">
-                            <div class="invalid-feedback">Пожалуйста, введите действительный адрес электронной почты для
+                            <div class="invalid-feedback">Пожалуйста, введите действительный адрес электронной почты
+                                для
                                 получения обновлений о доставке.
                             </div>
                         </div>
                         <div class="col-12">
                             <label class="form-label" for="address">Адрес</label>
-                            <input class="form-control" id="address" placeholder="1234 Main St" required type="text">
+                            <input class="form-control" id="address" placeholder="1234 Main St" required
+                                   type="text">
                             <div class="invalid-feedback">Пожалуйста, введите ваш адрес доставки.</div>
                         </div>
                         <div class="col-12">
@@ -56,7 +80,7 @@
                             <label class="form-label" for="country">Страна</label>
                             <select class="form-select" id="country" required>
                                 <option value="">Выберите...</option>
-                                <option>Россия</option>
+                                <option>Беларусь</option>
                             </select>
                             <div class="invalid-feedback">Пожалуйста, выберите действительную страну.</div>
                         </div>
@@ -64,7 +88,7 @@
                             <label class="form-label" for="state">Область</label>
                             <select class="form-select" id="state" required>
                                 <option value="">Выберите...</option>
-                                <option>Московская область</option>
+                                <option>Минская область</option>
                             </select>
                             <div class="invalid-feedback">Пожалуйста, выберите действительную область.</div>
                         </div>
@@ -75,12 +99,6 @@
                         </div>
                     </div>
                     <hr class="my-4">
-
-                    <div class="form-check">
-                        <input class="form-check-input" id="same-address" type="checkbox">
-                        <label class="form-check-label" for="same-address">Адрес доставки совпадает с адресом
-                            плательщика</label>
-                    </div>
 
                     <div class="form-check">
                         <input class="form-check-input" id="save-info" type="checkbox">
@@ -134,46 +152,33 @@
                         </div>
                     </div>
 
-                    <button class="w-100 btn btn-primary btn-lg" type="submit">Продолжить к оплате</button>
+                    <button class="w-100 btn btn-primary btn-lg" type="submit">Перейти к оплате</button>
                 </form>
             </div>
 
             <div class="col-md-5 col-lg-4 order-md-last">
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class="text-body-primary">Ваша корзина</span>
-                    <span class="badge bg-primary rounded-pill">3</span>
+                    <span class="badge bg-primary rounded-pill">1</span>
                 </h4>
                 <ul class="list-group mb-3">
-                    <li class="list-group-item d-flex justify-content-between lh-sm">
-                        <div>
-                            <h6 class="my-0">Продукт 1</h6>
-                            <small class="text-body-secondary">Описание продукта</small>
-                        </div>
-                        <span class="text-muted">$12</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between lh-sm">
-                        <div>
-                            <h6 class="my-0">Продукт 2</h6>
-                            <small class="text-body-secondary">Описание продукта</small>
-                        </div>
-                        <span class="text-muted">$8</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between lh-sm">
-                        <div>
-                            <h6 class="my-0">Продукт 3</h6>
-                            <small class="text-body-secondary">Описание продукта</small>
-                        </div>
-                        <span class="text-muted">$15</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
-                        <span>Итого (USD)</span>
-                        <strong>$35</strong>
-                    </li>
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <div>
+                                <h6 class="my-0" th:text="${product.name}">Продукт</h6>
+                                <small class="text-body-secondary" th:text="${product.description}">Описание
+                                    продукта</small>
+                            </div>
+                            <span class="text-muted" th:text="${product.price}">$XXX</span>
+                        </li>
+                    </ul>
+
                 </ul>
             </div>
         </div>
     </main>
 </div>
+
 <footer class="bg-light text-center text-lg-start mt-5">
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
         <div class="container py-4">
@@ -186,5 +191,6 @@
         </div>
     </div>
 </footer>
+
 </body>
 </html>
