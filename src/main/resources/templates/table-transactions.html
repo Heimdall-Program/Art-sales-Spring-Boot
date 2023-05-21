@@ -36,15 +36,15 @@
                         <a aria-current="page" class="nav-link active" href="#">
                             <i class="bi bi-house"></i> Обновить страницу</a>
                     <li class="nav-item">
-                        <a class="nav-link" href="/user_list">
+                        <a class="nav-link" href="/table-users">
                             <i class="bi bi-people"></i> Аккаунты</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/product">
+                        <a class="nav-link" href="/table-products">
                             <i class="bi bi-cart"></i> Объявления</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/transaction_list">
+                        <a class="nav-link" href="/table-transactions">
                             <i class="bi bi-graph-up"></i> Операции</a>
                     </li>
                 </ul>
@@ -96,6 +96,7 @@
 </footer>
 <script th:inline="javascript">
     /*<![CDATA[*/
+    //grid
     const ctx = document.getElementById('myChart').getContext('2d');
     const chartData = /*[[${chartData}]]*/ 'default';
     new Chart(ctx, {

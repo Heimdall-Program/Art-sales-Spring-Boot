@@ -18,13 +18,13 @@ public class TransactionController {
     private TransactionService transactionService;
 
 
-    @GetMapping("/transaction_list")
+    @GetMapping("/table-transactions")
     public String transactions(Model model) {
         List<Transaction> transactions = transactionService.findAll();
         Map<String, Double> chartData = transactionService.getMonthlySalesData();
         model.addAttribute("transactions", transactions);
         model.addAttribute("chartData", chartData);
-        return "transaction_list";
+        return "table-transactions";
     }
 }
 

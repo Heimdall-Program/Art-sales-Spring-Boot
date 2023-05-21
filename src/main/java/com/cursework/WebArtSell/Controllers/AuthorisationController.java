@@ -38,7 +38,7 @@ public class AuthorisationController {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             if (user.getRole().equals("ADMIN")) {
-                return "redirect:/user_list";
+                return "redirect:/table-users";
             } else {
                 return "redirect:/main-user";
             }

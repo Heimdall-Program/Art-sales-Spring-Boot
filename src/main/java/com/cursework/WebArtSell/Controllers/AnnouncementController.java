@@ -20,7 +20,7 @@ public class AnnouncementController {
     public String getAllAnnouncements(Model model) {
         List<Announcement> posts = (List<Announcement>) announcementRepository.findAll();
         model.addAttribute("posts", posts);
-        return "product";
+        return "table-products";
     }
 
     @GetMapping("/add")

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/user_list")
+@RequestMapping("/table-users")
 public class UserListController {
     @Autowired
     private UserRepository userRepository;
@@ -19,7 +19,7 @@ public class UserListController {
     public String getAllUsers(Model model) {
         Iterable<User> users = userRepository.findAll();
         model.addAttribute("users", users);
-        return "user_list";
+        return "table-users";
     }
 
     @PostMapping("/edit/{id}")
@@ -33,13 +33,13 @@ public class UserListController {
             user.setRole(userForm.getRole());
             userRepository.save(user);
         }
-        return "redirect:/user_list";
+        return "redirect:/table-users";
     }
 
     @PostMapping("/delete/{id}")
     public String deleteUser(@PathVariable("id") long id) {
         userRepository.deleteById(id);
-        return "redirect:/user_list";
+        return "redirect:/table-users";
     }
 
 

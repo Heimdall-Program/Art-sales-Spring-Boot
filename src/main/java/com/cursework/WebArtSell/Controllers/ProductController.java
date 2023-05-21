@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/product")
+@RequestMapping("/table-products")
 public class ProductController {
     @Autowired
     private ProductRepository productRepository;
@@ -21,7 +21,7 @@ public class ProductController {
     public String getAllProducts(Model model) {
         List<Product> products = productRepository.findAll();
         model.addAttribute("products", products);
-        return "product";
+        return "table-products";
     }
 
     @GetMapping("/add")
@@ -45,7 +45,7 @@ public class ProductController {
             model.addAttribute("product", product.get());
             return "product-details";
         }
-        return "redirect:/product";
+        return "redirect:/table-products";
     }
 
     @GetMapping("/{id}/edit")
@@ -55,7 +55,7 @@ public class ProductController {
             model.addAttribute("product", product.get());
             return "product-edit";
         }
-        return "redirect:/product";
+        return "redirect:/table-products";
     }
 
     @PostMapping("/{id}/edit")
@@ -68,19 +68,19 @@ public class ProductController {
         product.setArtist(updatedProduct.getArtist());
         product.setDimensions(updatedProduct.getDimensions());
         productRepository.save(product);
-        return "redirect:/product";
+        return "redirect:/table-products";
     }
 
     @PostMapping("/{id}/remove")
     public String deleteProduct(@PathVariable long id) {
         productRepository.deleteById(id);
-        return "redirect:/product";
+        return "redirect:/table-products";
     }
 
     @GetMapping("/category/{category}")
     public String getProductsByCategory(@PathVariable String category, Model model) {
         List<Product> products = productRepository.findByCategory(category);
         model.addAttribute("products", products);
-        return "product";
+        return "table-products";
     }
 }

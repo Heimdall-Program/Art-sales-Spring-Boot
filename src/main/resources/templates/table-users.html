@@ -37,19 +37,19 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/user_list">
+                        <a class="nav-link" href="/table-users">
                             <span class="feather feather-users"></span>
                             Аккаунты
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/product">
+                        <a class="nav-link" href="/table-products">
                             <span class="feather feather-shopping-cart"></span>
                             Объявления
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/transaction_list">
+                        <a class="nav-link" href="/table-transactions">
                             <span class="feather feather-bar-chart-2"></span>
                             Операции
                         </a>
@@ -80,11 +80,11 @@
                         <td th:text="${user.creationDate}">01.01.2023</td>
                         <td th:text="${user.status}">Активный</td>
                         <td>
-                            <form method="post" th:action="@{/user_list/edit/{id}(id=${user.id})}">
+                            <form method="post" th:action="@{/table-users/edit/{id}(id=${user.id})}">
                                 <button class="btn btn-sm btn-outline-dark btn-block" type="submit">Редактировать
                                 </button>
                             </form>
-                            <form method="post" th:action="@{/user_list/delete/{id}(id=${user.id})}">
+                            <form method="post" th:action="@{/table-users/delete/{id}(id=${user.id})}">
                                 <button class="btn btn-sm btn-outline-dark btn-block" type="submit">Удалить</button>
                             </form>
                         </td>

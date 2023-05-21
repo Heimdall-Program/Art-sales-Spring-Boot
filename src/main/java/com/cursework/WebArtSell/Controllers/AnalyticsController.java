@@ -22,7 +22,6 @@ public class AnalyticsController {
 
     @GetMapping("/api/transactionChartData")
     public List<TransactionChartData> getTransactionChartData() {
-        System.out.println("Fetching chart data...");
         List<TransactionChartData> chartData = transactionRepository.findTransactionChartData();
         System.out.println(chartData);
         return chartData;
