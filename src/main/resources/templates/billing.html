@@ -49,63 +49,20 @@
                             <input class="form-control" id="lastName" required type="text">
                             <div class="invalid-feedback">Требуется указать действительную фамилию.</div>
                         </div>
-                        <div class="col-12">
-                            <label class="form-label" for="username">Имя пользователя</label>
-                            <div class="input-group has-validation">
-                                <input class="form-control" id="username" placeholder="Имя пользователя" required
-                                       type="text">
-                                <div class="invalid-feedback">Требуется указать имя пользователя.</div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <label class="form-label" for="email">Электронная почта <span
-                                    class="text-body-secondary">(Необязательно)</span></label>
-                            <input class="form-control" id="email" placeholder="you@example.com" type="email">
-                            <div class="invalid-feedback">Пожалуйста, введите действительный адрес электронной почты
-                                для
-                                получения обновлений о доставке.
-                            </div>
-                        </div>
+
                         <div class="col-12">
                             <label class="form-label" for="address">Адрес</label>
                             <input class="form-control" id="address" placeholder="1234 Main St" required
                                    type="text">
                             <div class="invalid-feedback">Пожалуйста, введите ваш адрес доставки.</div>
                         </div>
-                        <div class="col-12">
-                            <label class="form-label" for="address2">Адрес 2 <span class="text-body-secondary">(Необязательно)</span></label>
-                            <input class="form-control" id="address2" placeholder="Квартира или офис" type="text">
-                        </div>
-                        <div class="col-md-5">
-                            <label class="form-label" for="country">Страна</label>
-                            <select class="form-select" id="country" required>
-                                <option value="">Выберите...</option>
-                                <option>Беларусь</option>
-                            </select>
-                            <div class="invalid-feedback">Пожалуйста, выберите действительную страну.</div>
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label" for="state">Область</label>
-                            <select class="form-select" id="state" required>
-                                <option value="">Выберите...</option>
-                                <option>Минская область</option>
-                            </select>
-                            <div class="invalid-feedback">Пожалуйста, выберите действительную область.</div>
-                        </div>
+
                         <div class="col-md-3">
                             <label class="form-label" for="zip">Почтовый индекс</label>
                             <input class="form-control" id="zip" placeholder="" required type="text">
                             <div class="invalid-feedback">Требуется указать почтовый индекс.</div>
                         </div>
                     </div>
-                    <hr class="my-4">
-
-                    <div class="form-check">
-                        <input class="form-check-input" id="save-info" type="checkbox">
-                        <label class="form-check-label" for="save-info">Сохранить эту информацию на следующий
-                            раз</label>
-                    </div>
-
                     <hr class="my-4">
 
                     <h4 class="mb-3">Оплата</h4>
@@ -151,8 +108,14 @@
                             <div class="invalid-feedback">Требуется указать CVV</div>
                         </div>
                     </div>
-
-                    <button class="w-100 btn btn-primary btn-lg" type="submit">Перейти к оплате</button>
+                </form>
+                <br>
+                <form th:action="@{/billing-buy}" th:object="${transaction}" method="post">
+                    <input type="hidden" th:field="*{buyerId}"/>
+                    <input type="hidden" th:field="*{sellerId}"/>
+                    <input type="hidden" th:field="*{purchaseDate}"/>
+                    <input type="hidden" th:field="*{sum}"/>
+                    <button type="submit" class="w-100 btn btn-primary btn-lg">Купить</button>
                 </form>
             </div>
 

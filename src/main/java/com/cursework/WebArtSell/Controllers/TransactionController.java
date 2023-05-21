@@ -4,9 +4,12 @@ package com.cursework.WebArtSell.Controllers;
 import com.cursework.WebArtSell.Models.Product;
 import com.cursework.WebArtSell.Models.Transaction;
 import com.cursework.WebArtSell.Models.TransactionChartData;
+import com.cursework.WebArtSell.Models.User;
 import com.cursework.WebArtSell.Repositories.ProductRepository;
 import com.cursework.WebArtSell.Repositories.TransactionRepository;
 import com.cursework.WebArtSell.Services.TransactionService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,17 +36,21 @@ public class TransactionController {
     private ProductRepository productRepository;
 
     @GetMapping("/billing/{id}")
-    public String authorisationModel(@PathVariable Long id, Model model) {
+    public String authorisationModel(@PathVariable Long id, Model model, HttpServletRequest request) {
         Optional<Product> product = productRepository.findById(id);
 
         if (product.isPresent()) {
             model.addAttribute("product", product.get());
 
             Transaction transaction = new Transaction();
-            transaction.setBuyerId("yourBuyerId");
-            transaction.setSellerId("yourSellerId");
+
+            HttpSession session = request.getSession();
+            User buyer = (User) session.getAttribute("user");
+            transaction.setBuyerId(buyer.getId().toString());
+            transaction.setSellerId(product.get().getCreatedBy().getId().toString());
             transaction.setPurchaseDate(LocalDateTime.now());
-            transaction.setSum(Double.valueOf(product.get().getPrice().toString()));
+            transaction.setSum(product.get().getPrice().doubleValue());
+
             model.addAttribute("transaction", transaction);
         } else {
             return "redirect:/billing";
@@ -51,6 +58,7 @@ public class TransactionController {
 
         return "billing";
     }
+
 
     @PostMapping("/billing-buy")
     public String processTransaction(@ModelAttribute Transaction transaction, Model model) {
@@ -64,6 +72,7 @@ public class TransactionController {
 
         return "redirect:/main-user";
     }
+
 
     @GetMapping("/api/transactions")
     public List<Transaction> getTransactions() {
@@ -86,5 +95,3 @@ public class TransactionController {
         return "table-transactions";
     }
 }
-
-
