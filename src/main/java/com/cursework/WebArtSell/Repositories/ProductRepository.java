@@ -1,4 +1,4 @@
-package com.cursework.WebArtSell.Repo;
+package com.cursework.WebArtSell.Repositories;
 
 import com.cursework.WebArtSell.Models.Product;
 import org.springframework.data.jpa.repository.JpaRepository;

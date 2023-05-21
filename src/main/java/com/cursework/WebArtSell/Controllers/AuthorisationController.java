@@ -1,7 +1,7 @@
 package com.cursework.WebArtSell.Controllers;
 
 import com.cursework.WebArtSell.Models.User;
-import com.cursework.WebArtSell.Repo.UserRepository;
+import com.cursework.WebArtSell.Repositories.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;

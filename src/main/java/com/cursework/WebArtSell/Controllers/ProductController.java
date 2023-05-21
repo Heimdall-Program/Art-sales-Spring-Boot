@@ -1,7 +1,10 @@
 package com.cursework.WebArtSell.Controllers;
 
 import com.cursework.WebArtSell.Models.Product;
-import com.cursework.WebArtSell.Repo.ProductRepository;
+import com.cursework.WebArtSell.Models.User;
+import com.cursework.WebArtSell.Repositories.ProductRepository;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,18 +28,19 @@ public class ProductController {
     }
 
     @GetMapping("/add")
-    public String addProduct(Model model) {
-        model.addAttribute("product", new Product());
+    public String addAnnouncement() {
         return "product-add";
     }
 
     @PostMapping("/add")
-    public String createProduct(@ModelAttribute Product product) {
+    public String createProduct(@ModelAttribute Product product, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        product.setCreatedBy(user);
         product.setCreationDate(LocalDateTime.now());
         productRepository.save(product);
         return "redirect:/main-user";
     }
-
 
     @GetMapping("/{id}")
     public String getProductById(@PathVariable long id, Model model) {
@@ -77,10 +81,4 @@ public class ProductController {
         return "redirect:/table-products";
     }
 
-    @GetMapping("/category/{category}")
-    public String getProductsByCategory(@PathVariable String category, Model model) {
-        List<Product> products = productRepository.findByCategory(category);
-        model.addAttribute("products", products);
-        return "table-products";
-    }
 }

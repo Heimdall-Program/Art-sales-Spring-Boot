@@ -1,7 +1,7 @@
 package com.cursework.WebArtSell.Controllers;
 
 import com.cursework.WebArtSell.Models.User;
-import com.cursework.WebArtSell.Repo.UserRepository;
+import com.cursework.WebArtSell.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/table-users")
-public class UserListController {
+public class UserController {
     @Autowired
     private UserRepository userRepository;
 
@@ -20,6 +20,16 @@ public class UserListController {
         Iterable<User> users = userRepository.findAll();
         model.addAttribute("users", users);
         return "table-users";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String showEditForm(@PathVariable("id") long id, Model model) {
+        Optional<User> userOptional = userRepository.findById(id);
+        if (userOptional.isPresent()) {
+            model.addAttribute("userForm", userOptional.get());
+            return "user-edit";
+        }
+        return "redirect:/table-users";
     }
 
     @PostMapping("/edit/{id}")
@@ -41,6 +51,5 @@ public class UserListController {
         userRepository.deleteById(id);
         return "redirect:/table-users";
     }
-
 
 }

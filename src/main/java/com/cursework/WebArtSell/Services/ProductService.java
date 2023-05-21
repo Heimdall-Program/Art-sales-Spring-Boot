@@ -1,7 +1,7 @@
 package com.cursework.WebArtSell.Services;
 
 import com.cursework.WebArtSell.Models.Product;
-import com.cursework.WebArtSell.Repo.ProductRepository;
+import com.cursework.WebArtSell.Repositories.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -16,6 +16,13 @@ public class HomeController {
         this.productService = productService;
     }
 
+    @GetMapping("/main-user")
+    public String getMainUserPage(Model model) {
+        List<Product> products = productService.findAll();
+        model.addAttribute("products", products);
+        return "main-user";
+    }
+
     @GetMapping("/")
     public String home(Model model) {
         List<Product> products = productService.findAll();

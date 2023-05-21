@@ -1,7 +1,7 @@
 package com.cursework.WebArtSell.Services;
 
 import com.cursework.WebArtSell.Models.Transaction;
-import com.cursework.WebArtSell.Repo.TransactionRepository;
+import com.cursework.WebArtSell.Repositories.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

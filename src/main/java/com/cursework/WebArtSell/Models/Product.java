@@ -3,6 +3,7 @@ package com.cursework.WebArtSell.Models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
 import org.springframework.data.annotation.Id;
 
 import java.math.BigDecimal;
@@ -21,6 +22,17 @@ public class Product {
     private String artist;
     private String dimensions;
     private String category;
+    @ManyToOne
+    private User createdBy;
+
+    public User getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(User createdBy) {
+        this.createdBy = createdBy;
+    }
+
     private LocalDateTime creationDate;
 
     public LocalDateTime getCreationDate() {
