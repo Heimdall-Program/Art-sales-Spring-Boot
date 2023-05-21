@@ -1,7 +1,9 @@
 package com.cursework.WebArtSell.Controllers;
 
+import com.cursework.WebArtSell.Models.Comment;
 import com.cursework.WebArtSell.Models.Product;
 import com.cursework.WebArtSell.Models.User;
+import com.cursework.WebArtSell.Repositories.CommentRepository;
 import com.cursework.WebArtSell.Repositories.ProductRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -19,6 +21,8 @@ import java.util.Optional;
 public class ProductController {
     @Autowired
     private ProductRepository productRepository;
+    @Autowired
+    private CommentRepository commentRepository;
 
     @GetMapping
     public String getAllProducts(Model model) {
@@ -46,11 +50,14 @@ public class ProductController {
     public String getProductById(@PathVariable long id, Model model) {
         Optional<Product> product = productRepository.findById(id);
         if (product.isPresent()) {
+            List<Comment> comments = commentRepository.findByProductId(id);
             model.addAttribute("product", product.get());
+            model.addAttribute("comments", comments);
             return "product-details";
         }
         return "redirect:/table-products";
     }
+
 
     @GetMapping("/{id}/edit")
     public String editProduct(@PathVariable long id, Model model) {

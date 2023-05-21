@@ -12,9 +12,11 @@
             background-color: #004085;
             color: white;
         }
+
         .btn:hover {
             background-color: #002752;
         }
+
         .card-img-top {
             transition: transform .2s;
             width: 50%;
@@ -54,6 +56,27 @@
             </div>
         </div>
         <a class="btn" th:href="'/billing/' + ${el.id}">Купить</a>
+    </div>
+    <div class="card mt-2">
+        <div class="card-body">
+            <form method="post" th:action="@{/table-products/{productId}/comments/add(productId=${product.id})}">
+                <div class="form-group">
+                    <label for="commentText">Оставить комментарий:</label>
+                    <textarea class="form-control" id="commentText" name="text" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary mt-2">Подтвердить</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="mt-5" th:each="comment : ${comments}">
+        <div class="card mt-2">
+            <div class="card-body">
+                <h5 class="card-title" th:text="${comment.user.email}"></h5>
+                <p class="card-text" th:text="${comment.text}"></p>
+                <p><b>Дата создания: </b><span th:text="${comment.creationDate}"></span></p>
+            </div>
+        </div>
     </div>
 </main>
 
