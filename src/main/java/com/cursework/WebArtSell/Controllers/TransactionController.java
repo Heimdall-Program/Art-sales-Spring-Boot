@@ -97,9 +97,6 @@ public class TransactionController {
 
         return "redirect:/main-user";
     }
-
-
-
     @GetMapping("/api/transactions")
     public List<Transaction> getTransactions() {
         return transactionRepository.findAll();

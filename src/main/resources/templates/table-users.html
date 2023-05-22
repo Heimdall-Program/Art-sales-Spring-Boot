@@ -76,20 +76,38 @@
                     <tbody>
                     <tr th:each="user : ${users}">
                         <td th:text="${userStat.count}">1</td>
-                        <td th:text="${user.login}">Иван Иванов</td>
-                        <td th:text="${user.email}">ivan@example.com</td>
-                        <td th:text="${user.creationDate}">01.01.2023</td>
-                        <td th:text="${user.status}">Активный</td>
-                        <td>
-                            <form method="post" th:action="@{/table-users/edit/{id}(id=${user.id})}">
-                                <button class="btn btn-sm btn-outline-dark btn-block" type="submit">Редактировать
+                        <form method="post" th:action="@{/table-users/edit/{id}(id=${user.id})}">
+                            <td><input type="text" th:value="${user.login}" name="login"
+                                       th:disabled="${user.id == currentUser.id}"></td>
+                            <td><input type="text" th:value="${user.email}" name="email"
+                                       th:disabled="${user.id == currentUser.id}"></td>
+                            <td th:text="${user.creationDate}">01.01.2023</td>
+                            <td>
+                                <select name="status" th:disabled="${user.id == currentUser.id}">
+                                    <option th:each="status : ${statuses}" th:value="${status}" th:text="${status}"
+                                            th:selected="${status == user.status}"></option>
+                                </select>
+                            </td>
+                            <td>
+                                <select name="role" th:disabled="${user.id == currentUser.id}">
+                                    <option th:each="role : ${roles}" th:value="${role}" th:text="${role}"
+                                            th:selected="${role == user.role}"></option>
+                                </select>
+                            </td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-dark btn-block" type="submit"
+                                        th:disabled="${user.id == currentUser.id}">Редактировать
                                 </button>
-                            </form>
-                            <form method="post" th:action="@{/table-users/delete/{id}(id=${user.id})}">
-                                <button class="btn btn-sm btn-outline-dark btn-block" type="submit">Удалить</button>
-                            </form>
+                        </form>
+                        <form method="post" th:action="@{/table-users/delete/{id}(id=${user.id})}">
+                            <button class="btn btn-sm btn-outline-dark btn-block" type="submit"
+                                    th:disabled="${user.id == currentUser.id}">Удалить
+                            </button>
+                        </form>
                         </td>
                     </tr>
+
+
                     </tbody>
                 </table>
             </div>
