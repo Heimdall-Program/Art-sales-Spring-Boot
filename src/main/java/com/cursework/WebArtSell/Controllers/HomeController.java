@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -47,5 +48,27 @@ public class HomeController {
         List<Product> products = productService.findAll();
         model.addAttribute("products", products);
         return "main";
+    }
+
+    @GetMapping("/main-user/category/{category}")
+    public String getMainUserPageByCategory(@PathVariable String category, Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            return "redirect:/authorisation";
+        }
+
+        List<Product> products = productService.findAllByCategory(category);
+        Long currentUserId = user.getId();
+        for (Product product : products) {
+            if (transactionService.isProductInTransactions(product)) {
+                product.setDescription("Этот товар уже продан!");
+            }
+            if (product.getCreatedBy().getId().equals(currentUserId)) {
+                product.setDescription("Это ваш товар!)");
+            }
+        }
+        model.addAttribute("products", products);
+        return "main-user";
     }
 }

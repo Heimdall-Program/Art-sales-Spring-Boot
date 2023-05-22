@@ -37,16 +37,19 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="/main-user">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/main">Главная</a></li>
                     <li class="nav-item"><a class="nav-link" th:href="@{/table-products/add}">Новое объявление</a></li>
                 </ul>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link">Всё</a></li>
-                    <li class="nav-item"><a class="nav-link">Живопись</a></li>
-                    <li class="nav-item"><a class="nav-link">Скульптура</a></li>
-                    <li class="nav-item"><a class="nav-link">Антиквариант</a></li>
-                    <li class="nav-item"><a class="nav-link">Монеты</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/main-user}">Всё</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/authorisation}">Живопись</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/authorisation}">Скульптура</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link"
+                                            th:href="@{/authorisation}">Антиквариант</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/authorisation}">Монеты</a></li>
                 </ul>
+
                 <div class="d-flex">
                     <a class="btn btn-outline-primary" href="authorisation">Авторизоваться</a>
                 </div>
