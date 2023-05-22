@@ -109,12 +109,14 @@
                         </div>
                     </div>
                 </form>
+
                 <br>
                 <form th:action="@{/billing-buy}" th:object="${transaction}" method="post">
                     <input type="hidden" th:field="*{buyerId}"/>
                     <input type="hidden" th:field="*{sellerId}"/>
                     <input type="hidden" th:field="*{purchaseDate}"/>
                     <input type="hidden" th:field="*{sum}"/>
+                    <input type="hidden" name="productId" th:value="${productId}"/>
                     <button type="submit" class="w-100 btn btn-primary btn-lg">Купить</button>
                 </form>
             </div>
@@ -157,3 +159,4 @@
 
 </body>
 </html>
+

@@ -15,17 +15,27 @@ public class Transaction {
     private Long id;
 
     @Column(name = "buyer_id")
-    private String buyerId;
+    private Long buyerId;
 
     @Column(name = "purchase_date")
     private LocalDateTime purchaseDate;
 
     @Column(name = "seller_id")
-    private String sellerId;
+    private Long sellerId;
 
     @Column(name = "sum")
     private Double sum;
 
+    @Column(name = "product_id")
+    private Long productId;
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
 
     public Long getId() {
         return id;
@@ -33,14 +43,6 @@ public class Transaction {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getBuyerId() {
-        return buyerId;
-    }
-
-    public void setBuyerId(String buyerId) {
-        this.buyerId = buyerId;
     }
 
     public LocalDateTime getPurchaseDate() {
@@ -51,19 +53,27 @@ public class Transaction {
         this.purchaseDate = purchaseDate;
     }
 
-    public String getSellerId() {
-        return sellerId;
-    }
-
-    public void setSellerId(String sellerId) {
-        this.sellerId = sellerId;
-    }
-
     public Double getSum() {
         return sum;
     }
 
     public void setSum(Double sum) {
         this.sum = sum;
+    }
+
+    public Long getBuyerId() {
+        return buyerId;
+    }
+
+    public void setBuyerId(Long buyerId) {
+        this.buyerId = buyerId;
+    }
+
+    public Long getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(Long sellerId) {
+        this.sellerId = sellerId;
     }
 }

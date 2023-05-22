@@ -13,10 +13,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -46,12 +43,14 @@ public class TransactionController {
 
             HttpSession session = request.getSession();
             User buyer = (User) session.getAttribute("user");
-            transaction.setBuyerId(buyer.getId().toString());
-            transaction.setSellerId(product.get().getCreatedBy().getId().toString());
+            transaction.setBuyerId(buyer.getId());
+            transaction.setSellerId(product.get().getCreatedBy().getId());
             transaction.setPurchaseDate(LocalDateTime.now());
             transaction.setSum(product.get().getPrice().doubleValue());
+            transaction.setProductId(product.get().getId());
 
             model.addAttribute("transaction", transaction);
+            model.addAttribute("productId", product.get().getId());
         } else {
             return "redirect:/billing";
         }
@@ -60,18 +59,45 @@ public class TransactionController {
     }
 
 
+
+
     @PostMapping("/billing-buy")
-    public String processTransaction(@ModelAttribute Transaction transaction, Model model) {
+    public String processTransaction(@ModelAttribute Transaction transaction, @RequestParam("productId") Long productId, Model model, HttpServletRequest request) {
         try {
+            System.out.println(transaction.getBuyerId());
+            System.out.println(transaction.getSellerId());
+            System.out.println(transaction.getPurchaseDate());
+            System.out.println(transaction.getSum());
+
             transactionRepository.save(transaction);
+
+            Optional<Product> product = productRepository.findById(productId);
+            if (product.isPresent()) {
+                model.addAttribute("product", product.get());
+            } else {
+                return "redirect:/main-user";
+            }
+
         } catch (Exception e) {
             model.addAttribute("error", "Ошибка");
             model.addAttribute("transaction", new Transaction());
+            Optional<Product> product = productRepository.findById(productId);
+            if (product.isPresent()) {
+                model.addAttribute("product", product.get());
+                HttpSession session = request.getSession();
+                User buyer = (User) session.getAttribute("user");
+                transaction.setBuyerId(buyer.getId());
+                transaction.setSellerId(product.get().getCreatedBy().getId());
+                transaction.setPurchaseDate(LocalDateTime.now());
+                transaction.setSum(product.get().getPrice().doubleValue());
+                transaction.setProductId(product.get().getId());
+            }
             return "billing";
         }
 
         return "redirect:/main-user";
     }
+
 
 
     @GetMapping("/api/transactions")

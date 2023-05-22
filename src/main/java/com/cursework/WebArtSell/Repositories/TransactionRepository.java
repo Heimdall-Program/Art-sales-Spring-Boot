@@ -12,4 +12,5 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
             "FROM Transaction t GROUP BY FUNCTION('DATE_FORMAT', t.purchaseDate, '%Y-%m-%d') ORDER BY FUNCTION('DATE_FORMAT', t.purchaseDate, '%Y-%m-%d') ASC")
     List<TransactionChartData> findTransactionChartData();
 
+    List<Transaction> findAllByProductId(Long productId);
 }

@@ -12,4 +12,5 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addInterceptor(new RoleCheckInterceptor()).addPathPatterns("/table-users", "/table-transactions", "/table-products", "/product-edit");
         registry.addInterceptor(new UserCheckInterceptor()).addPathPatterns("/billing/**", "/table-products/add", "/product-details/**", "/main-user", "/table-products/*");
     }
+
 }
