@@ -24,6 +24,15 @@ public class Product {
     private String category;
     @ManyToOne
     private User createdBy;
+    private boolean disableButton;
+
+    public boolean isDisableButton() {
+        return disableButton;
+    }
+
+    public void setDisableButton(boolean disableButton) {
+        this.disableButton = disableButton;
+    }
 
     public User getCreatedBy() {
         return createdBy;

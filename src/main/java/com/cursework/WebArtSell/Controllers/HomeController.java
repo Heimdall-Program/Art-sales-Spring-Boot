@@ -33,15 +33,16 @@ public class HomeController {
         for (Product product : products) {
             if (transactionService.isProductInTransactions(product)) {
                 product.setDescription("Этот товар уже продан!");
+                product.setDisableButton(true);
             }
             if (product.getCreatedBy().getId().equals(currentUserId)) {
-                product.setDescription("Это ваш товар!)");
+                product.setDescription("Это ваше объявление!");
+                product.setDisableButton(true);
             }
         }
         model.addAttribute("products", products);
         return "main-user";
     }
-
 
     @GetMapping("/")
     public String home(Model model) {
@@ -63,9 +64,11 @@ public class HomeController {
         for (Product product : products) {
             if (transactionService.isProductInTransactions(product)) {
                 product.setDescription("Этот товар уже продан!");
+                product.setDisableButton(true);
             }
             if (product.getCreatedBy().getId().equals(currentUserId)) {
-                product.setDescription("Это ваш товар!)");
+                product.setDescription("Это ваше объявление!");
+                product.setDisableButton(true);
             }
         }
         model.addAttribute("products", products);
