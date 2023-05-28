@@ -2,7 +2,6 @@ package com.cursework.WebArtSell.Services;
 
 import com.cursework.WebArtSell.Models.Product;
 import com.cursework.WebArtSell.Models.Transaction;
-import com.cursework.WebArtSell.Models.User;
 import com.cursework.WebArtSell.Repositories.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,15 +33,6 @@ public class TransactionService {
         }
 
         return salesData;
-    }
-    public boolean checkProductTransaction(Long productId){
-        List<Transaction> transactions = transactionRepository.findAllByProductId(productId);
-
-        return transactions.isEmpty();
-    }
-
-    public boolean checkProductOwnership(User user, Product product){
-        return user.getId().equals(product.getCreatedBy().getId());
     }
 
     public boolean isProductInTransactions(Product product) {

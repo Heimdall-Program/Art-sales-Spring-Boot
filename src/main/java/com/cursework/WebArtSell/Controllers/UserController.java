@@ -27,7 +27,7 @@ public class UserController {
     }
 
     @PostMapping("/edit/{id}")
-    public String editUser(@PathVariable("id") Long id, @ModelAttribute User user, Model model, HttpSession session) {
+    public String editUser(@PathVariable("id") Long id, @ModelAttribute User user, HttpSession session) {
         User currentUser = (User) session.getAttribute("user");
         if (!currentUser.getId().equals(id)) {
             Optional<User> optUser = userRepository.findById(id);
@@ -44,7 +44,7 @@ public class UserController {
     }
 
     @PostMapping("/delete/{id}")
-    public String deleteUser(@PathVariable("id") Long id, Model model, HttpSession session) {
+    public String deleteUser(@PathVariable("id") Long id, HttpSession session) {
         User currentUser = (User) session.getAttribute("user");
         if (!currentUser.getId().equals(id)) {
             userRepository.deleteById(id);
